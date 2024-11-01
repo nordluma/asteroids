@@ -7,7 +7,14 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     game_clock = pygame.time.Clock()
+
     player = Player(x=SCREEN_WIDTH / 2, y=SCREEN_HEIGHT / 2)
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    updateable.add(player)
+    drawable.add(player)
+
     dt = 0
 
     while True:
@@ -16,8 +23,10 @@ def main():
                 return
 
         screen.fill("black")
-        player.update(dt)
-        player.draw(screen)
+
+        updateable.update(dt)
+        drawable.draw(screen)
+
         pygame.display.flip()
 
         # tick returns elapsed time in ms by passing in 60 we will limit the
