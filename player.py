@@ -4,7 +4,7 @@ from constants import PLAYER_RADIUS, PLAYER_TURN_SPEED
 
 
 class Player(CircleShape):
-    def __init__(self, x, y) -> None:
+    def __init__(self, x: int, y: int):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
 
@@ -24,7 +24,7 @@ class Player(CircleShape):
     def rotate(self, dt):
         self.rotation += PLAYER_TURN_SPEED * dt
 
-    def update(self, dt):
+    def update(self, dt: float):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_a]:
